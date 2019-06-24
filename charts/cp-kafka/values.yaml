@@ -7,11 +7,11 @@
 ## ------------------------------------------------------
 
 ## Number of Kafka brokers
-brokers: 3
+brokers: 1
 
 ## Image Info
 ## ref: https://hub.docker.com/r/confluentinc/cp-kafka/
-image: confluentinc/cp-enterprise-kafka
+image: confluentinc/cp-kafka
 imageTag: 5.2.2
 
 ## Specify a imagePullPolicy
@@ -134,7 +134,7 @@ cp-zookeeper:
   ## If true, install the cp-zookeeper chart alongside cp-kafka
   ## ref: ../cp-zookeeper
   enabled: true
-  servers: 3
+  servers: 1
   persistence:
     enabled: true
     dataDirSize: 5Gi

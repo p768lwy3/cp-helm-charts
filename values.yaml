@@ -3,7 +3,7 @@
 ## ------------------------------------------------------
 cp-zookeeper:
   enabled: true
-  servers: 3
+  servers: 1
   image: confluentinc/cp-zookeeper
   imageTag: 5.2.2
   ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
@@ -38,7 +38,7 @@ cp-zookeeper:
 ## ------------------------------------------------------
 cp-kafka:
   enabled: true
-  brokers: 3
+  brokers: 1
   image: confluentinc/cp-enterprise-kafka
   imageTag: 5.2.2
   ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
@@ -163,3 +163,55 @@ cp-control-center:
   #  requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+## ------------------------------------------------------
+## KSQL client
+## ------------------------------------------------------
+cp-ksql-client:
+  enable: true
+  image: confluentinc/cp-ksql-cli
+  imageTag:
+  ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+  ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+  imagePullSecrets:
+  #  - name: "regcred"
+  headOptions: "-Xms512M -Xmx512M"
+
+## ------------------------------------------------------
+## Kafka Manager
+## ------------------------------------------------------
+yahoo-kafka-manager:
+  enable: true
+  image: zenko/kafka-manager
+  imageTag:
+  ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+  ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+  imagePullSecrets:
+  #  - name: "regcred"
+  headOptions: "-Xms512M -Xmx512M"
+
+## ------------------------------------------------------
+## prometheus
+## ------------------------------------------------------
+prometheus:
+  enable: true
+  image: prom/prometheus
+  imageTag:
+  ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+  ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+  imagePullSecrets:
+  #  - name: "regcred"
+  headOptions: "-Xms512M -Xmx512M"
+
+## ------------------------------------------------------
+## grafana
+## ------------------------------------------------------
+grafana:
+  enable: true
+  image: grafana/grafana
+  imageTag:
+  ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+  ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+  imagePullSecrets:
+  #  - name: "regcred"
+  headOptions: "-Xms512M -Xmx512M"
