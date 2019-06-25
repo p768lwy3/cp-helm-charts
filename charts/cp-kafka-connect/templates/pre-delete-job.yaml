@@ -20,10 +20,10 @@ spec:
         chart: {{ template "cp-kafka-connect.chart" . }}
         release: {{ .Release.Name }}
         heritage: {{ .Release.Service }}
-  spec:
-    restartPolicy: Never
-    containers:
-    - name: pre-delete-job
-      image: "{{ .Values.image }}:{{ .Values.imageTag }}"
-      imagePullPolicy: "{{ .Values.imagePullPolicy }}"
-      command: ["fusermount", "-u", "/usr/share/confluent-hub-componenets"]
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: pre-delete-job
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        imagePullPolicy: "{{ .Values.imagePullPolicy }}"
+        command: ["fusermount", "-u", "/usr/share/confluent-hub-componenets"]

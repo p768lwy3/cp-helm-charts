@@ -20,10 +20,10 @@ spec:
         chart: {{ template "cp-kafka-connect.chart" . }}
         release: {{ .Release.Name }}
         heritage: {{ .Release.Service }}
-  spec:
-    restartPolicy: Never
-    containers:
-    - name: post-install-job
-      image: "{{ .Values.image }}:{{ .Values.imageTag }}"
-      imagePullPolicy: "{{ .Values.imagePullPolicy }}"
-      command: ["gcsfuse", "-o", "nonempty", "kafka-cluster", "/usr/share/confluent-hub-componenets"]
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: post-install-job
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        imagePullPolicy: "{{ .Values.imagePullPolicy }}"
+        command: ["gcsfuse", "-o", "nonempty", "kafka-cluster", "/usr/share/confluent-hub-componenets"]
