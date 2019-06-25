@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta2
+kind: Job
+metadata:
+  name: "{{ template "cp-kafka-connect.fullname" . }}-predelete"
+  labels:
+    app: {{ template "cp-kafka-connect.name" . }}
+    chart: {{ template "cp-kafka-connect.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": 0
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      name: {{ .Release.Name }}
+      labels:
+        app: {{ template "cp-kafka-connect.name" . }}
+        chart: {{ template "cp-kafka-connect.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+  spec:
+    restartPolicy: Never
+    containers:
+    - name: pre-delete-job
+      image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+      imagePullPolicy: "{{ .Values.imagePullPolicy }}"
+      command: ["fusermount", "-u", "/usr/share/confluent-hub-componenets"]
