@@ -27,19 +27,3 @@ dependencies:
   version: 0.1.0
   repository: file://./charts/cp-control-center
   condition: cp-control-center.enabled
-- name: cp-ksql-client
-  version: 0.1.0
-  repository: file://./charts/cp-ksql-client
-  condition: cp-ksql-client.enabled
-- name: yahoo-kafka-manager
-  version: 0.1.0
-  repository: file://./charts/yahoo-kafka-manager
-  condition: yahoo-kafka-manager.enabled
-- name: prometheus
-  version: 0.1.0
-  repository: file://./charts/prometheus
-  condition: prometheus.enabled
-- name: grafana
-  version: 0.1.0
-  repository: file://./charts/grafana
-  condition: grafana.enabled
